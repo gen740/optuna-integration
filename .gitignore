@@ -123,3 +123,6 @@ docs/source/tutorial/
 
 # Dask
 dask-worker-space/
+
+# patches
+*.patch
