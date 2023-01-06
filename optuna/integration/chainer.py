@@ -4,15 +4,15 @@ from typing import Union
 import optuna
 
 
-with optuna._imports.try_import() as _imports:
-    import chainer
-    from chainer.training.extension import Extension
-    from chainer.training.triggers import IntervalTrigger
-    from chainer.training.triggers import ManualScheduleTrigger
+# with optuna._imports.try_import() as _imports:
+import chainer
+from chainer.training.extension import Extension
+from chainer.training.triggers import IntervalTrigger
+from chainer.training.triggers import ManualScheduleTrigger
 
-if not _imports.is_successful():
-    Extension = object  # type: ignore  # NOQA
-
+# if not _imports.is_successful():
+    # Extension = object  # type: ignore  # NOQA
+    #
 
 class ChainerPruningExtension(Extension):
     """Chainer extension to prune unpromising trials.
@@ -45,12 +45,12 @@ class ChainerPruningExtension(Extension):
 
     def __init__(
         self,
-        trial: optuna.trial.Trial,
+        trial: "optuna.trial.Trial",
         observation_key: str,
         pruner_trigger: Union[Tuple[(int, str)], "IntervalTrigger", "ManualScheduleTrigger"],
     ) -> None:
 
-        _imports.check()
+        # _imports.check()
 
         self._trial = trial
         self._observation_key = observation_key
@@ -68,7 +68,7 @@ class ChainerPruningExtension(Extension):
         observation_value: Union[float, "chainer.Variable"]  # type: ignore
     ) -> float:
 
-        _imports.check()
+        # _imports.check()
 
         try:
             if isinstance(observation_value, chainer.Variable):  # type: ignore
