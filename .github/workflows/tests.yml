@@ -3,7 +3,7 @@ name: Tests
 on:
   push:
     branches:
-      - main
+      - test_uv
   pull_request: {}
   schedule:
     - cron: '0 23 * * SUN-THU'
@@ -28,6 +28,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install libopenblas-dev
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv pip install optuna
 
     - name: Install
       run: |
