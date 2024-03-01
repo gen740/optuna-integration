@@ -32,10 +32,10 @@ jobs:
       run: |
         uv venv
         source ./.venv/bin/activate
-        uv pip install "optuna @ git+https://github.com/optuna/optuna"
         uv pip install -e .[test]
-        which pytest
         uv pip install -e .[all]
+        uv pip uninstall optuna
+        uv pip install "optuna @ git+https://github.com/optuna/optuna"
         uv pip install distributed
 
     - name: Tests
