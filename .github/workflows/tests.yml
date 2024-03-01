@@ -34,6 +34,7 @@ jobs:
         source ./.venv/bin/activate
         uv pip install optuna
         uv pip install -e .[test]
+        which pytest
         uv pip install -e .[all]
         uv pip install distributed
 
