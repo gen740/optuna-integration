@@ -28,28 +28,17 @@ jobs:
         sudo apt-get -y install libopenblas-dev
         curl -LsSf https://astral.sh/uv/install.sh | sh
         uv venv
-        source ./venv/bin/activate
+        ls -la
+        source ./.venv/bin/activate
         uv pip install optuna
 
     - name: Install
       run: |
-        python -m pip install --upgrade pip
-
-        pip install --progress-bar off .[test]
-        pip install --progress-bar off .[all]
-
-        # TODO(not522): Remove the version constraint when splitting this workflow.
-        # This constraint is necessary to use the old Pydantic.
-        # See https://github.com/pydantic/pydantic/issues/5821.
-        pip install "typing_extensions<4.6.0"
-
-        # Install optuna from optuna master
-        pip install git+https://github.com/optuna/optuna@master
-
-        # Install distributed to run importance_tests/test_init tests.
-        pip install distributed
+        uv pip install --progress-bar off .[test]
+        uv pip install --progress-bar off .[all]
+        uv pip install distributed
 
     - name: Tests
       run: |
-        pip install "numpy<1.24"
+        uv pip install "numpy<1.24"
         pytest tests
