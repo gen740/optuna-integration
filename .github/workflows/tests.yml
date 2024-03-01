@@ -40,5 +40,6 @@ jobs:
 
     - name: Tests
       run: |
+        source ./.venv/bin/activate
         uv pip install "numpy<1.24"
         pytest tests
