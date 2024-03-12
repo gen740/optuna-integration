@@ -93,7 +93,8 @@ jobs:
         fi
 
     - name: Extra commands
-      run: bash -e -c "${{ inputs.extra_cmds }}"
+      run: |
+        ${{ inputs.extra_cmds }}
 
     - name: Tests
       run: |

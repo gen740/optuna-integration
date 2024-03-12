@@ -42,8 +42,8 @@ jobs:
         pip install --progress-bar off .[test]
         pip install --progress-bar off -r optuna_integration/mxnet/requirements.txt
 
-
     - name: Tests
       run: |
         pip install "numpy<1.24"
         pytest tests/mxnet
+
