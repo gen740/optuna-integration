@@ -28,7 +28,7 @@ from optuna_integration._imports import try_import
 
 
 with try_import() as _imports:
-    import distributed
+    import          distributed
     import distributed.comm.tcp
     from distributed.protocol.pickle import dumps
     from distributed.protocol.pickle import loads
