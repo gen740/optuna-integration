@@ -3,7 +3,7 @@ name: Checks
 on:
   push:
     branches:
-      - main
+      - split_ci3
   pull_request: {}
   schedule:
     - cron: '0 23 * * SUN-THU'
