@@ -10,8 +10,16 @@ on:
         required: false
         type: string
 jobs:
+
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Initital task"
+        run: echo "${{ input.integration_name}}"
+
   checks:
     runs-on: ubuntu-latest
+    needs: init
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -70,6 +78,7 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
+    needs: init
     strategy:
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
