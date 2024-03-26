@@ -73,8 +73,6 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
-    needs: checks
-    if: always()
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -103,12 +101,12 @@ jobs:
             pytest tests/${{ inputs.integration_name }}
           fi
 
-  conclude:
+  conclusion:
     runs-on: ubuntu-latest
     needs: [checks, tests]
     if: always()
     steps:
-      - name: Conclude
+      - name: Conclusion
         run: |
           if [ "${{ needs.checks.result }}" != "success" ] || [ "${{ needs.tests.result }}" != "success" ]; then
             echo "Previous job failed"
